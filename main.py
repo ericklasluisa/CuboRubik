@@ -209,16 +209,16 @@ def main():
 
     # Realizar algunas rotaciones
 
-    rubik.rotar('N', 'horario')
+    rubik.rotar('N', 'h')
     print("Rotacion Superior")
     rubik.imprimirCubo()
-    rubik.rotar('N', 'antihorario')
+    rubik.rotar('N', 'aH')
     print()
     print("Rotacion Inferior ")
     rubik.imprimirCubo()
     print()
     print("DESORDENAR CUBO ")
-    rubik.desordenar()
+    #rubik.desordenar()
     rubik.imprimirCubo()
     print()
 
