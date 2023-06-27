@@ -2,7 +2,6 @@
 import numpy as np
 import random
 import os
-from random import shuffle
 from colorama import init, Fore, Style
 
 init()
@@ -60,10 +59,9 @@ class CuboRubik:
             #print("La cara "+cara+" se movio en sentido "+direccion)
 
     #DESORDENAR ALEATORIAMENTE
-    '''def desordenar(self):
-        shuffle(self.movimientos)
-        for key in self.movimientos:
-            self.rotar(key, 'H')'''
+    def desordenar(self):
+        numMovimientos = random.randrange(0, 23, 1)
+        self.movimientosAleatorios(numMovimientos)
 
     #REALIZAR X NUMERO DE MOVIMIENTOS ALEATORIOS
     def movimientosAleatorios(self, numMovimientos):
@@ -215,31 +213,40 @@ class CuboRubik:
 
 def main():
     rubik = CuboRubik()
-    print("Cubo inicial:")
-    rubik.imprimirCubo()
 
+    while True:
 
-    # Realizar algunas rotaciones
+        print("--------CUBO RUBIK--------")
+        rubik.imprimirCubo()
+        print("Numero de combinaciones realizadas: ", rubik.numCombinacionesRealizadas)
+        print("Combinaciones Realizadas: ", rubik.combinacionesRealizadas)
+        print()
+        print("Menu de Opciones")
+        print("1. Rotar una cara.")
+        print("2. Desordenar aleatoriamente.")
+        print("3. Realizar n movimientos aleatorios.")
+        print("4. Salir")
+        opcion = int(input("Ingrese una opccion (del 1 al 4): "))
+        match opcion:
+            case 1:
+                os.system('cls')
+                print()
 
-    rubik.rotar('N', 'h')
-    print("Rotacion Superior")
-    rubik.imprimirCubo()
-    rubik.rotar('N', 'aH')
-    print()
-    print("Rotacion Inferior ")
-    rubik.imprimirCubo()
-    print()
-    print("DESORDENAR CUBO ")
-    #rubik.desordenar()
-    rubik.imprimirCubo()
-    print()
+            case 2:
+                os.system("cls")
+                print("Cubo Original")
+                rubik.desordenar()
+            case 3:
+                os.system("cls")
+                numMovimientos = 0
+                while (numMovimientos < 1):
+                    numMovimientos = int(input("Ingrese el numero de movimientos aleatorios que desea realizar (entero positivo): "))
+                rubik.movimientosAleatorios(numMovimientos)
+            case 4:
+                break
+            case _:
+                print('Error, opcion invalida')
 
-    rubik.movimientosAleatorios(5)
-    print()
-    # rubik.rotar('U', 'antihorario')
-    #
-    # print("Cubo después de las rotaciones:")
-    # imprimir_cubo(rubik)
 
 
 
