@@ -1,19 +1,22 @@
 
 import numpy as np
 import random
+import os
 from random import shuffle
 from colorama import init, Fore, Style
+
+init()
 
 class CuboRubik:
     #Constructor
     def __init__(self):
         self.cubo = np.array([
-            [[f"{Fore.RED}R{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.RESET}{Fore.RED}{Style.BRIGHT}N{Fore.YELLOW}{Style.NORMAL}{Fore.RESET}"]*3 for _ in range(3)],
-            [['B']*3 for _ in range(3)],
-            [[f"{Fore.  YELLOW}A{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.GREEN}V{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.BLUE}X{Fore.RESET}"]*3 for _ in range(3)]])
+            [[f"{Fore.RED}■{Fore.RESET}"]*3 for _ in range(3)],
+            [[f"{Fore.MAGENTA}■{Fore.RESET}"]*3 for _ in range(3)],
+            [['■']*3 for _ in range(3)],
+            [[f"{Fore.  YELLOW}■{Fore.RESET}"]*3 for _ in range(3)],
+            [[f"{Fore.GREEN}■{Fore.RESET}"]*3 for _ in range(3)],
+            [[f"{Fore.BLUE}■{Fore.RESET}"]*3 for _ in range(3)]])
 
     movimientos = ['B', 'R', 'N', 'A', 'X', 'V']
     direccionMovimineto = ['H','AH']
@@ -54,6 +57,7 @@ class CuboRubik:
             self.moverV(direccion)
             self.numCombinacionesRealizadas += 1
             self.combinacionesRealizadas.append(['V', direccion])
+            #print("La cara "+cara+" se movio en sentido "+direccion)
 
     #DESORDENAR ALEATORIAMENTE
     '''def desordenar(self):
@@ -63,10 +67,18 @@ class CuboRubik:
 
     #REALIZAR X NUMERO DE MOVIMIENTOS ALEATORIOS
     def movimientosAleatorios(self, numMovimientos):
+        os.system("cls")
+        self.imprimirCubo()
+        os.system("pause")
         for i in range(numMovimientos):
+            os.system("cls")
             movAleatorio = random.choice(self.movimientos)
             direccionAleatoria = random.choice(self.direccionMovimineto)
             self.rotar(movAleatorio, direccionAleatoria)
+            print("Movimiento " + (str)(i+1))
+            print("La cara: " + movAleatorio + " se movio en sentido " + direccionAleatoria)
+            self.imprimirCubo()
+            os.system("pause")
 
     ##FUNCIONES SECUNDARIAS
     #MOVER CARA BLANCA
@@ -223,7 +235,6 @@ def main():
     print()
 
     rubik.movimientosAleatorios(5)
-    rubik.imprimirCubo()
     print()
     # rubik.rotar('U', 'antihorario')
     #
