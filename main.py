@@ -210,6 +210,67 @@ class CuboRubik:
             print(end="|  ")
             print()
 
+def menu_sentido(rubik, cara):
+    print("1. Sentido Horario")
+    print("2. Sentido Antihorario")
+    print("3. Regresar")
+    opcion = int(input("Ingrese una opción: "))
+    match opcion:
+        case 1:
+            sentido = 'H'
+            rubik.rotar(cara, sentido)
+        case 2:
+            sentido = 'AH'
+            rubik.rotar(cara, sentido)
+        case 3:
+            print("Regresando al menú rotaciones")
+        case _:
+            print("Opción no válida")
+
+
+
+def menu_rotar(rubik):
+    while True:
+        print("--------Menú Rotaciones------------")
+        print("1. Rotar cara frontal")
+        print("2. Rotar cara posterior")
+        print("3. Rotar cara superior")
+        print("4. Rotar cara inferior")
+        print("5. Rotar cara izquierda")
+        print("6. Rotar cara derecha")
+        print("7. Salir")
+        opcion = int(input("Ingrese una opción: "))
+        match opcion:
+            case 1:
+                print("Rotar cara frontal: ")
+                menu_sentido(rubik, 'R')
+                rubik.imprimirCubo()
+            case 2:
+                print("Rotar cara posterior: ")
+                menu_sentido(rubik, 'N')
+                rubik.imprimirCubo()
+            case 3:
+                print("Rotar cara superior: ")
+                menu_sentido(rubik, 'B')
+                rubik.imprimirCubo()
+            case 4:
+                print("Rotar cara inferior: ")
+                menu_sentido(rubik, 'A')
+                rubik.imprimirCubo()
+            case 5:
+                print("Rotar cara izquierda: ")
+                menu_sentido(rubik, 'V')
+                rubik.imprimirCubo()
+            case 6:
+                print("Rotar cara derecha: ")
+                menu_sentido(rubik, 'X')
+                rubik.imprimirCubo()
+            case 7:
+                print("Saliendo...")
+                break
+            case _:
+                print("Opción no válida")
+
 
 def main():
     rubik = CuboRubik()
@@ -230,6 +291,7 @@ def main():
         match opcion:
             case 1:
                 os.system('cls')
+                menu_rotar(rubik)
                 print()
 
             case 2:
