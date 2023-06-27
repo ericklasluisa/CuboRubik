@@ -214,7 +214,7 @@ def menu_sentido(rubik, cara):
     print("1. Sentido Horario")
     print("2. Sentido Antihorario")
     print("3. Regresar")
-    opcion = int(input("Ingrese una opción: "))
+    opcion = int(input("Ingrese una opción (1 o 2): "))
     match opcion:
         case 1:
             sentido = 'H'
@@ -239,7 +239,7 @@ def menu_rotar(rubik):
         print("5. Rotar cara izquierda")
         print("6. Rotar cara derecha")
         print("7. Salir")
-        opcion = int(input("Ingrese una opción: "))
+        opcion = int(input("Ingrese una opción (del 1 al 7): "))
         match opcion:
             case 1:
                 print("Rotar cara frontal: ")
