@@ -10,12 +10,12 @@ class CuboRubik:
     #Constructor
     def __init__(self):
         self.cubo = np.array([
-            [[f"{Fore.RED}■{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.MAGENTA}■{Fore.RESET}"]*3 for _ in range(3)],
-            [['■']*3 for _ in range(3)],
-            [[f"{Fore.  YELLOW}■{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.GREEN}■{Fore.RESET}"]*3 for _ in range(3)],
-            [[f"{Fore.BLUE}■{Fore.RESET}"]*3 for _ in range(3)]])
+            [[f"{Fore.RED}■{Fore.RESET}"] * 3 for _ in range(3)],
+            [[f"{Fore.MAGENTA}■{Fore.RESET}"] * 3 for _ in range(3)],
+            [['■'] * 3 for _ in range(3)],
+            [[f"{Fore.YELLOW}■{Fore.RESET}"] * 3 for _ in range(3)],
+            [[f"{Fore.GREEN}■{Fore.RESET}"] * 3 for _ in range(3)],
+            [[f"{Fore.BLUE}■{Fore.RESET}"] * 3 for _ in range(3)]])
 
     movimientos = ['B', 'R', 'N', 'A', 'X', 'V']
     direccionMovimineto = ['H','AH']
@@ -25,10 +25,10 @@ class CuboRubik:
     ##FUNCIONES PRINCIPALES
     #ROTAR CARA
     def rotar(self, cara, direccion):
-        if cara not in ['R', 'N', 'B', 'A', 'V', 'X']:
+        if cara not in self.movimientos:
             print("Capa inválida")
             return
-        if direccion not in ['H', 'AH']:
+        if direccion not in self.direccionMovimineto:
             print("Dirección inválida")
             return
         # Realizar el movimiento
