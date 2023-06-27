@@ -65,7 +65,7 @@ class CuboRubik:
 
     #REALIZAR X NUMERO DE MOVIMIENTOS ALEATORIOS
     def movimientosAleatorios(self, numMovimientos):
-        os.system("cls")
+        print("Cubo Inicial")
         self.imprimirCubo()
         os.system("pause")
         for i in range(numMovimientos):
@@ -215,7 +215,7 @@ def main():
     rubik = CuboRubik()
 
     while True:
-
+        os.system('cls')
         print("--------CUBO RUBIK--------")
         rubik.imprimirCubo()
         print("Numero de combinaciones realizadas: ", rubik.numCombinacionesRealizadas)
@@ -234,7 +234,7 @@ def main():
 
             case 2:
                 os.system("cls")
-                print("Cubo Original")
+
                 rubik.desordenar()
             case 3:
                 os.system("cls")
