@@ -78,6 +78,23 @@ class CuboRubik:
             self.imprimirCubo()
             os.system("pause")
 
+    def armar(self):
+        os.system("cls")
+        combinaciones = self.combinacionesRealizadas[::-1]
+        for combinacion in combinaciones:
+            if(combinacion[1] == "H"):
+                self.rotar(combinacion[0], "AH")
+                print("La cara: " + combinacion[0] + " se movio en sentido AH")
+            if (combinacion[1] == "AH"):
+                self.rotar(combinacion[0], "H")
+                print("La cara: " + combinacion[0] + " se movio en sentido H")
+            self.imprimirCubo()
+            os.system("pause")
+            print()
+        self.combinacionesRealizadas = []
+        self.numCombinacionesRealizadas = 0
+                
+
     ##FUNCIONES SECUNDARIAS
     #MOVER CARA BLANCA
     def moverB(self, direccion):
@@ -288,7 +305,9 @@ def main():
         print("1. Rotar una cara.")
         print("2. Desordenar aleatoriamente.")
         print("3. Realizar n movimientos aleatorios.")
-        print("4. Salir")
+        print("4. Armar CuboRubik.")
+        print("5. Salir.")
+
         opcion = int(input("Ingrese una opccion (del 1 al 4): "))
         match opcion:
             case 1:
@@ -307,6 +326,8 @@ def main():
                     numMovimientos = int(input("Ingrese el numero de movimientos aleatorios que desea realizar (entero positivo): "))
                 rubik.movimientosAleatorios(numMovimientos)
             case 4:
+                rubik.armar()
+            case 5:
                 break
             case _:
                 print('Error, opcion invalida')
